@@ -1,0 +1,37 @@
+$main-color: #808080;
+
+%card-item {
+    text-decoration: none;
+    margin-top: 3px;
+}
+%nav-card {
+    border-radius: 5px;
+    padding: 2px;
+    transition: all 0.2s ease;
+}
+%nav-card:hover{
+    transition: all 0.2s ease;
+    background-color: darken($main-color, 8%);
+}
+.nav {
+    grid-area: nav;
+    background-color: $main-color;
+    border-radius: 5px;
+    padding: 5px 5px 0 5px;
+}
+.item {
+    @extend %card-item;
+    color: #ffffff;
+}
+.active {
+    @extend %card-item;
+    color: darken($main-color, 15%);
+}
+.navCard {
+    @extend %nav-card;
+}
+.row{
+    display: flex;
+    flex-flow: column;
+}
+

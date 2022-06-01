@@ -1,0 +1,39 @@
+$main-color: #808080;
+.avatar {
+    width: 100px;
+    height: 100px;
+    margin: 5px 0;
+}
+.descriptionBlock {
+    padding-left: 15px;
+}
+.profileBlock {
+    display: flex;
+    justify-content: flex-start;
+}
+.statusArea{
+    margin: 5px;
+}
+.statusArea input{
+    background-color: $main-color;
+    border-radius: 5px;
+    outline: none;
+    border-color: transparent;
+}
+.status{
+
+}
+.textStatus{
+    margin: 5px;
+    background-color: $main-color;
+    border-radius: 5px;
+}
+.fullname{
+    margin: 5px;
+    background-color: $main-color;
+    border-radius: 5px;
+}
+.avatarBlock{
+    display: flex;
+    flex-flow: column;
+}

@@ -1,0 +1,13 @@
+$main-color: #808080;
+.header {
+    grid-area: header;
+    background-color: $main-color;
+    border-radius: 5px;
+}
+.loginBlock {
+
+}
+.loginBlock a{
+    text-decoration: none;
+    color: black;
+}
