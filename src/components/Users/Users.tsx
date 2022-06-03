@@ -14,6 +14,7 @@ import {
     getUsersInfo
 } from '../../redux/usersSelectors';
 import {useTypedDispatch} from "../../redux/reduxStore";
+import {Avatar} from "@mui/material";
 
 type PropsType = {
 
@@ -91,7 +92,7 @@ export const Users: React.FC<PropsType> = (props) => {
                         <div>
                             <div >
                                 <NavLink to={'./../profile/' + user.id}>
-                                    <img src={user.photos.small != null ? user.photos.small : userPhoto}/>
+                                    <Avatar src={user.photos.small != null ? user.photos.small : userPhoto}/>
                                 </NavLink>
                             </div>
                             <div >
