@@ -31,7 +31,6 @@ export const Login = () => {
         register,
         formState: {errors},
         handleSubmit,
-        reset,
         // eslint-disable-next-line react-hooks/rules-of-hooks
     } = useForm<LoginType>({
         mode: 'onBlur'
