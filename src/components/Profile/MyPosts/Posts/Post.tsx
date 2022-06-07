@@ -17,7 +17,7 @@ const Post: React.FC<PropsType> = (props) => {
     const login = useSelector(selectCurrentUserLogin)
 
     return (
-        <Card sx={{margin: 1}}>
+        <Card sx={{marginTop: 1}}>
             <CardHeader
                 avatar={<Avatar/>}
                 title={login}

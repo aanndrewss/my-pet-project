@@ -6,6 +6,7 @@ import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import ProfileDataForm from "./ProfileDataForm";
 import {Card} from "@mui/material";
 import {ContactsType, ProfileType} from "../../../types/types";
+import {useForm} from "react-hook-form";
 
 type PropsType = {
     profile: ProfileType | null

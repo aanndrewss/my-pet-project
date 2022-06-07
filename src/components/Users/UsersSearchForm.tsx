@@ -1,6 +1,9 @@
 import React from "react";
 import {useForm} from "react-hook-form";
 import {FilterType} from "../../redux/usersReducer";
+import {Box, Button, InputAdornment, TextField} from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
+import styles from './Users.module.scss'
 
 export type PropsType = {
     onFilterChanged: (filter: FilterType) => void
@@ -29,17 +32,24 @@ export const UsersSearchForm: React.FC<PropsType> = (props) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input
+            <form onSubmit={handleSubmit(onSubmit)} className={styles.mainForm}>
+                <Box sx={{ display: 'flex', alignItems: 'flex-end', margin: 1}}>
+                    <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }}/>
+                <TextField
                     {...register('term', {})}
                     placeholder='Search'
+                    type='search'
+                    variant='standard'
+                    label='Search'
+                    size='small'
                 />
-                <select{...register('friend', {})}>
+                </Box>
+                <select{...register('friend', {})} className={styles.select}>
                     <option value='null'>All</option>
                     <option value='true'>Only friends</option>
                 </select>
                 <div>
-                    <button type='submit'>Find</button>
+                    <Button sx={{margin: 1}} variant='outlined' type='submit'>Find</Button>
                 </div>
             </form>
         </div>

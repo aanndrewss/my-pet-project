@@ -1,0 +1,25 @@
+.content{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1rem;
+  gap: 1rem;
+}
+.button{
+  margin: 1rem;
+}
+.mainForm {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: row;
+}
+.select{
+  border-bottom: 1px solid #757575;
+  border-right: none;
+  border-top: none;
+  border-left: none;
+  color: #626262;
+  outline: none;
+  height: 45px;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './MyPosts.module.scss'
 import Post from './Posts/Post';
 import {useForm} from "react-hook-form";
-import {Box} from "@mui/material";
+import {Box, Button, TextField, Typography} from "@mui/material";
 import {PostType} from "../../../types/types";
 
 export type MapPropsType = {
@@ -39,22 +39,27 @@ const MyPosts: React.FC<MapPropsType & DispatchPropsType> = (props) => {
     })
 
     return (
-        <Box>
-            <div className={classes.header}>
-                My posts
-            </div>
+        <Box sx={{margin: 1}}>
+            <Typography className={classes.header} sx={{textAlign: 'center'}}>
+                My Posts
+            </Typography>
             <div className={classes.newpost}>
                 <form onSubmit={handleSubmit(addNewPost)}>
-            <textarea
-                {...register('newPost', {
-                    minLength: {
-                        value: 3,
-                        message: 'Пост должен содержать минимум 3 символ.'
-                    }
-                })}
-            />
-                    <div>{errors?.newPost && <div style={{color: 'red'}}>{errors?.newPost?.message || 'Error'}</div>}</div>
-                    <button type='submit'>Add post</button>
+                    <TextField
+                        {...register('newPost', {
+                            required: 'Field is required',
+                            minLength: {
+                                value: 3,
+                                message: 'Minimal length is 3 symbols'
+                            }
+                        })}
+                        variant='outlined'
+                        label='New Post'
+                        fullWidth
+                        error={!!errors.newPost}
+                        helperText={errors?.newPost?.message}
+                    />
+                    <Button sx={{marginTop: 1}} fullWidth type='submit' variant='contained'>Add post</Button>
                 </form>
             </div>
             <div className={classes.posts}>

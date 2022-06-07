@@ -14,11 +14,11 @@ import {
     getUsersInfo
 } from '../../redux/usersSelectors';
 import {useTypedDispatch} from "../../redux/reduxStore";
-import {Avatar} from "@mui/material";
+import {Avatar, Button, Card} from "@mui/material";
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import styles from './Users.module.scss'
 
-type PropsType = {
-
-}
+type PropsType = {}
 
 export const Users: React.FC<PropsType> = (props) => {
 
@@ -43,7 +43,7 @@ export const Users: React.FC<PropsType> = (props) => {
         if (!!pageQuery) actualPage = Number(pageQuery)
 
         if (!!termQuery) actualFilter = {...actualFilter, term: termQuery as string}
-        switch(friendQuery) {
+        switch (friendQuery) {
             case "null":
                 actualFilter = {...actualFilter, friend: null}
                 break;
@@ -67,7 +67,6 @@ export const Users: React.FC<PropsType> = (props) => {
     }, [filter, currentPage])
 
 
-
     const onPageChanged = (pageNumber: number) => {
         dispatch(getUsers(pageNumber, pageSize, filter))
     }
@@ -89,23 +88,15 @@ export const Users: React.FC<PropsType> = (props) => {
                            totalItemsCount={totalUsersCount} pageSize={pageSize}/>
                 <div>
                     {users.map(user => <div key={user.id}>
-                        <div>
-                            <div >
+                        <Card sx={{marginBottom: 1}}>
+                            <div className={styles.content}>
+                            <div>
                                 <NavLink to={'./../profile/' + user.id}>
-                                    <Avatar src={user.photos.small != null ? user.photos.small : userPhoto}/>
+                                    <Avatar sx={{width: 100, height: 100}}
+                                            src={user.photos.small != null ? user.photos.small : userPhoto}/>
                                 </NavLink>
                             </div>
-                            <div >
-                                {user.followed
-                                    ? <button disabled={followingInProgress.some(id => id === user.id)}
-                                              onClick={() => {
-                                                  unfollow_(user.id);
-                                              }}>Unfollow</button>
-                                    : <button disabled={followingInProgress.some(id => id === user.id)}
-                                              onClick={() => {
-                                                  follow_(user.id);
-                                              }}>Follow</button>}
-                            </div>
+
                             <div>
                                 <div>
                                     {user.name}
@@ -114,7 +105,21 @@ export const Users: React.FC<PropsType> = (props) => {
                                     {user.status}
                                 </div>
                             </div>
-                        </div>
+                            </div>
+                            <div className={styles.button}>
+                                {user.followed
+                                    ? <Button startIcon={<PersonAddIcon/>} variant='contained'
+                                              disabled={followingInProgress.some(id => id === user.id)}
+                                              onClick={() => {
+                                                  unfollow_(user.id);
+                                              }}>Unfollow</Button>
+                                    : <Button startIcon={<PersonAddIcon/>} variant='contained'
+                                              disabled={followingInProgress.some(id => id === user.id)}
+                                              onClick={() => {
+                                                  follow_(user.id);
+                                              }}>Follow</Button>}
+                            </div>
+                        </Card>
                     </div>)}</div>
             </div>
         </>

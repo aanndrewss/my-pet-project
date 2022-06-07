@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
+import {Box, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
 import PersonIcon from '@mui/icons-material/Person';
 import FeedIcon from '@mui/icons-material/Feed';
 import MessageIcon from '@mui/icons-material/Message';
@@ -11,7 +11,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 
 const Nav: React.FC = (props) => {
     return (
-        <Box flex={0.7} sx={{display: {xs: 'none', sm: 'block'}}}>
+        <Box flex={0.8} sx={{display: {xs: 'none', sm: 'block'}}}>
             <Box position='fixed'>
                 <List>
                     <Link to={'/profile'} style={{color: 'black', textDecoration: 'none'}}>

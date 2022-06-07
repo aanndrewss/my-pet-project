@@ -1,20 +1,12 @@
 .header{
   font-size: 20px;
+  margin-bottom: 10px;
 }
 .newpost{
-  font-size: 17px;
+  display: flex;
+  flex-flow: column;
 }
 .posts{
   display: flex;
   flex-flow: column;
-}
-.btns {
-  display: flex;
-  flex-flow: row;
-}
-.btn1 {
-  margin: 3px 3px 3px 0;
-}
-.btn2 {
-  margin: 3px 3px 3px 0;
 }

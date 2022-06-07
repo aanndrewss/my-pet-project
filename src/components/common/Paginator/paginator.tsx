@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import classes from './paginator.module.scss'
 import cn from 'classnames'
+import {Button} from "@mui/material";
 
 type PropsType = {
     totalItemsCount: number
@@ -26,7 +27,7 @@ let Paginator: React.FC<PropsType> = ({totalItemsCount, pageSize, currentPage, o
 
     return <div className={classes.paginator}>
         {portionNumber > 1 &&
-            <button onClick={() => {setPortionNumber(portionNumber - 1)}}>Prev</button>}
+            <Button variant='contained' size='small' onClick={() => {setPortionNumber(portionNumber - 1)}}>Prev</Button>}
 
         {pages.filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
             .map((p) => {
@@ -41,7 +42,7 @@ let Paginator: React.FC<PropsType> = ({totalItemsCount, pageSize, currentPage, o
                          }}>{p}</span>
         })}
         {portionCount > portionNumber &&
-            <button onClick={() => {setPortionNumber(portionNumber + 1)}}>NEXT</button>}
+            <Button variant='contained' size='small' onClick={() => {setPortionNumber(portionNumber + 1)}}>NEXT</Button>}
     </div>
 }
 

@@ -40,7 +40,7 @@ export const App: React.FC = (props) => {
         <Box bgcolor={'background.default'} color={'text.primary'}>
           <Container maxWidth='lg'>
             <Header/>
-            <Stack direction='row' justifyContent='space-between' spacing={2}>
+            <Stack direction='row' justifyContent='space-between'>
               <Nav/>
               <Box flex={4}>
                 <Suspense fallback={<Preloader/>}>
