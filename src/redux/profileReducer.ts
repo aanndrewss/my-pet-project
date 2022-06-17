@@ -35,8 +35,7 @@ const profileReducer = (state = initialState, action: ActionsType): InitialState
             let newPost = {
                 id: 5,
                 message: action.newPost,
-                likeCounts: 0,
-                avatar: 'https://kinosvami.ru/wp-content/uploads/2021/03/xx42-1-1024x571.jpg'
+                likeCounts: 0
             };
             return {
                 ...state,

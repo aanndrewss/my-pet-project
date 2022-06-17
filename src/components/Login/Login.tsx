@@ -5,6 +5,7 @@ import {useForm} from "react-hook-form";
 import {login} from "../../redux/authReducer";
 import {selectCaptcha, selectIsAuth} from "../../redux/authSelectors";
 import {useTypedDispatch} from "../../redux/reduxStore";
+import {Box, Button, Card, Checkbox, TextField, Typography} from "@mui/material";
 
 
 export const Login = () => {
@@ -17,7 +18,7 @@ export const Login = () => {
     }
 
     if (isAuth) {
-        return <Navigate to={'/profile'} />
+        return <Navigate to={'/profile'}/>
     }
 
     type LoginType = {
@@ -37,55 +38,42 @@ export const Login = () => {
     })
 
     return (
-        <div>
-            <h1>Login</h1>
+        <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input
-                    {...register('email', {
-                        required: 'Field is required',
-                        minLength: {
-                            value: 4,
-                            message: 'Minimum is 4 symbols'
-                        }
-                    })}
-                    placeholder='Email'
+                <TextField sx={{margin: 1, marginTop: 4}} fullWidth
+                           variant='outlined'
+                           label='Email'
+                           {...register('email', {
+                               required: 'Field is required',
+                               minLength: {
+                                   value: 4,
+                                   message: 'Minimum is 4 symbols'
+                               }
+                           })}
+                           placeholder='Email' error={!!errors.email} helperText={errors?.email?.message}
                 />
-                <div>
-                    {errors?.email && <div style={{color: 'red'}}>{errors?.email?.message || 'Error'}</div>}
-                </div>
-                <input
-                    {...register('password', {
-                        required: 'Field is required',
-                        minLength: {
-                            value: 5,
-                            message: 'Minimum is 5 symbols'
-                        }
-                    })}
-                    placeholder='Password'
-                    type='password'
+                <TextField sx={{margin: 1}} fullWidth
+                           variant='outlined'
+                           label='Password'
+                           {...register('password', {
+                               required: 'Field is required',
+                               minLength: {
+                                   value: 5,
+                                   message: 'Minimum is 5 symbols'
+                               }
+                           })}
+                           placeholder='Password'
+                           type='password' error={!!errors.password} helperText={errors?.password?.message}
                 />
-                <div>
-                    {errors?.password && <div style={{color: 'red'}}>{errors?.password?.message || 'Error'}</div>}
-                </div>
-
-                <input
-                    {...register('rememberMe', {
-                        required: 'Field is required',
-                    })}
-                    type='checkbox'
-                />
-                <div>remember me</div>
-                {captchaUrl && <img src={captchaUrl} />}
-                {captchaUrl && <input
+                {captchaUrl && <img src={captchaUrl}/>}
+                {captchaUrl && <TextField
                     {...register('captcha', {
                         required: 'Field is required'
                     })}
                     placeholder='Symbols from image'
                 />}
-                <div>
-                    <button type='submit'>Login</button>
-                </div>
+                <Button fullWidth sx={{margin: 1}} variant='contained' type='submit'>Login</Button>
             </form>
-        </div>
+        </Box>
     )
 }

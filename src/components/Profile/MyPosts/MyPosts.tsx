@@ -47,7 +47,6 @@ const MyPosts: React.FC<MapPropsType & DispatchPropsType> = (props) => {
                 <form onSubmit={handleSubmit(addNewPost)}>
                     <TextField
                         {...register('newPost', {
-                            required: 'Field is required',
                             minLength: {
                                 value: 3,
                                 message: 'Minimal length is 3 symbols'

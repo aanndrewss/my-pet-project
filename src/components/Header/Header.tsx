@@ -1,11 +1,12 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {AppBar, Avatar, Box, Button, Menu, MenuItem, Toolbar, Typography} from "@mui/material";
+import {AppBar, Avatar, Box, Button, ButtonProps, Menu, MenuItem, Toolbar, Typography} from "@mui/material";
 import {logout} from "../../redux/authReducer";
 import {selectCurrentUserLogin, selectIsAuth} from "../../redux/authSelectors";
 import styled from "@emotion/styled";
 import {useTypedDispatch} from "../../redux/reduxStore";
+import {purple} from "@mui/material/colors";
 
 type PropsType = {}
 
@@ -32,6 +33,14 @@ export const Header: React.FC<PropsType> = (props) => {
         dispatch(logout())
     }
 
+    const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
+        color: 'white',
+        backgroundColor: 'white',
+        '&:hover': {
+            backgroundColor: 'gray',
+        },
+    }));
+
     return (
         <AppBar position='sticky'>
             <StyledToolbar>
@@ -45,7 +54,7 @@ export const Header: React.FC<PropsType> = (props) => {
                                 {login}
                             </Typography>
                             <Avatar
-                                style={{cursor: 'pointer'}}
+                                style={{cursor: 'pointer', marginLeft: 5}}
                                 onClick={handleClick}
                                 id="positioned-button"
                                 aria-controls={open ? 'positioned-menu' : undefined}
@@ -55,11 +64,11 @@ export const Header: React.FC<PropsType> = (props) => {
                         </Box>
                     </>
                     : <Box>
-                        <Button variant='contained'>
-                            <Link to={'/login'}>
+                        <ColorButton variant='contained' >
+                            <Link to={'/login'} style={{color: 'black', textDecoration: 'none'}}>
                                 Login
                             </Link>
-                        </Button>
+                        </ColorButton>
                     </Box>
                 }
             </StyledToolbar>

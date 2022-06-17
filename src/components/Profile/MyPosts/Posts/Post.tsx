@@ -6,6 +6,8 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import ShareIcon from '@mui/icons-material/Share';
 import {selectCurrentUserLogin} from "../../../../redux/authSelectors";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import ForumIcon from '@mui/icons-material/Forum';
 
 type PropsType = {
     message: string
@@ -16,11 +18,17 @@ const Post: React.FC<PropsType> = (props) => {
 
     const login = useSelector(selectCurrentUserLogin)
 
+
     return (
         <Card sx={{marginTop: 1}}>
             <CardHeader
                 avatar={<Avatar/>}
                 title={login}
+                action={
+                    <IconButton aria-label="settings">
+                        <MoreVertIcon/>
+                    </IconButton>
+                }
             />
             <CardContent>
                 <Typography>
@@ -34,6 +42,9 @@ const Post: React.FC<PropsType> = (props) => {
                 <Typography>
                     {props.likeCounts}
                 </Typography>
+                <IconButton>
+                    <ForumIcon/>
+                </IconButton>
                 <IconButton>
                     <Checkbox icon={<BookmarkBorderIcon />} checkedIcon={<BookmarkIcon sx={{color: '#999'}} />}/>
                 </IconButton>
