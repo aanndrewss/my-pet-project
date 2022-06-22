@@ -1,7 +1,8 @@
 export type PostType = {
-    id: number
+    postId: number
     message: string
     likeCounts: number
+    comments: Array<string>
 }
 export type ContactsType = {
     github: string

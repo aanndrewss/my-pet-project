@@ -7,23 +7,25 @@ import {FormAction} from "redux-form/lib/actions";
 let initialState = {
     postsData: [
         {
-            id: 1,
+            postId: 1,
             message: 'HI',
             likeCounts: 0,
+            comments: ['fdfsdf, yoyoyoyoy', 'tawe']
         },
         {
-            id: 2,
+            postId: 2,
             message: 'My name andrew',
             likeCounts: 5,
         },
         {
-            id: 3,
+            postId: 3,
             message: 'HI love Arina',
             likeCounts: 23,
         }
     ] as Array<PostType>,
     profile: null as ProfileType | null,
-    status: ''
+    status: '',
+
 }
 
 export type InitialStateTypeProfile = typeof initialState
@@ -33,15 +35,21 @@ const profileReducer = (state = initialState, action: ActionsType): InitialState
     switch (action.type) {
         case 'profile/ADD-POST':
             let newPost = {
-                id: 5,
+                postId: 5,
                 message: action.newPost,
-                likeCounts: 0
+                likeCounts: 0,
+                comments: []
             };
             return {
                 ...state,
                 postsData: [...state.postsData, newPost]
             }
 
+        case 'profile/ADD_COMMENT':
+            return {
+                ...state,
+                postsData: []
+            }
         case 'profile/SET_USER_PROFILE':
             return {
                 ...state,
@@ -68,7 +76,8 @@ export const actions = {
     addPost: (newPost: string) => ({type: 'profile/ADD-POST', newPost} as const),
     setUserProfile: (profile: ProfileType) => ({type: 'profile/SET_USER_PROFILE', profile} as const),
     savePhotoSuccess: (photos: PhotosType) => ({type: 'profile/SAVE_PHOTO_SUCCESS', photos} as const),
-    setStatus: (status: string) => ({type: 'profile/SET_STATUS', status} as const)
+    setStatus: (status: string) => ({type: 'profile/SET_STATUS', status} as const),
+    addComment: (newComment: string) => ({type: 'profile/ADD_COMMENT', newComment} as const)
 }
 
 export const getUserProfile = (userId: number | null): ThunkType => async (dispatch) => {
